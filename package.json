@@ -2,7 +2,9 @@
   "name": "micro-gallery",
   "version": "0.0.1",
   "description": "Like zeit's micro-list, but for images.",
-  "main": "./dist/bin/gallery.js",
+  "bin": {
+    "gallery": "./dist/bin/gallery.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +23,32 @@
   "bugs": {
     "url": "https://github.com/andreasmcdermott/micro-gallery/issues"
   },
-  "homepage": "https://github.com/andreasmcdermott/micro-gallery#readme"
+  "homepage": "https://github.com/andreasmcdermott/micro-gallery#readme",
+  "xo": {
+    "semicolon": false,
+    "space": true,
+    "esnext": true
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs",
+      "transform-async-to-generator"
+    ]
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "denodeify": "^1.2.1",
+    "micro": "^6.0.2",
+    "minimist": "^1.2.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cached": "^1.1.0",
+    "gulp-chmod": "^1.3.0",
+    "xo": "^0.16.0"
+  }
 }
