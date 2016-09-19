@@ -1,6 +1,6 @@
 {
   "name": "micro-gallery",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Like zeit's micro-list, but for images.",
   "bin": {
     "gallery": "./dist/bin/gallery.js"
