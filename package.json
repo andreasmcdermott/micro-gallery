@@ -1,0 +1,25 @@
+{
+  "name": "micro-gallery",
+  "version": "0.0.1",
+  "description": "Like zeit's micro-list, but for images.",
+  "main": "./dist/bin/gallery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/andreasmcdermott/micro-gallery.git"
+  },
+  "keywords": [
+    "gallery",
+    "images",
+    "micro",
+    "micro-list"
+  ],
+  "author": "Andreas McDermott <andreasmcdermott@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreasmcdermott/micro-gallery/issues"
+  },
+  "homepage": "https://github.com/andreasmcdermott/micro-gallery#readme"
+}
