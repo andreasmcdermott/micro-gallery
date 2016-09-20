@@ -7,7 +7,7 @@ Share you folder of images with a single command.
 Install it (requires Node v6.0.0 and above)
 
 ```
-npm install -g micro-gallery
+$ npm install -g micro-gallery
 ```
 
 Run it
