@@ -84,16 +84,18 @@ const getAsset = async assetPath => {
 
 const renderDir = async directory => {
   const files = await toPromise(fs.readdir)(directory)
+  const dirObj = path.parse(directory)
+  let dirPath = `${dirObj.dir}/${dirObj.base}`.replace(`${rootObj.dir}/`, ``)
+  let dirPathParts = dirPath.split('/')
+
   const data = {
     directories: [],
     images: [],
     path: [],
-    assetsDir: '/assets'
+    assetsDir: '/assets',
+    folder: dirObj.name
   }
 
-  const dirObj = path.parse(directory)
-  let dirPath = `${dirObj.dir}/${dirObj.base}`.replace(`${rootObj.dir}/`, ``)
-  let dirPathParts = dirPath.split('/')
   let url = []
   for(let i = 0; i < dirPathParts.length; ++i) {
     if (dirPathParts[i] !== rootObj.base) {
