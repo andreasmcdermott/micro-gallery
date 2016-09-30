@@ -23,6 +23,7 @@ $ gallery [options] <path>
 | -h, --help             | Output all available options | - |
 | -v, --version          | The version tag of the micro-gallery instance on your device | - |
 | -p, --port [port]      | A custom port on which the app will be running | 3000 |
+| -d, --dev              | Use development mode. When active assets and template isn't cached | - |
 
 ## Contribute
 

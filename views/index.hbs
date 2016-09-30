@@ -23,9 +23,16 @@
 
       <ul class="images">
         {{#each images}}
-          <li><img src="/{{relative}}" alt="{{name}}" title="{{name}}"></li>
+          <li><a href="#" class="images__zoom"><img src="/{{relative}}" alt="{{name}}" title="{{name}}" class="images__img"></a></li>
         {{/each}}
       </ul>
+
+      <div class="image--zoomed js-unzoom">
+        <a href="#" class="js-unzoom">
+          <img id="zoomedImage" src="" alt="" title="" class="js-unzoom">
+        </a>
+      </div> 
     </main>
+    <script type="text/javascript" src="{{assetsDir}}/app.js"></script>
   </body>
 </html

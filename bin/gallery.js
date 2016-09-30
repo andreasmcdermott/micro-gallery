@@ -26,6 +26,7 @@ const ignoredFiles = new Set([
 
 const argv = minimist(process.argv.slice(2), {
   alias: {
+    dev: ['d'],
     port: ['p']
   }
 })
@@ -56,7 +57,7 @@ const exists = async filePath => {
 
 let cachedView = null
 const getView = async () => {
-  if (!cachedView) {
+  if (!cachedView || argv.dev) {
     try {
       let file = await toPromise(fs.readFile)(path.resolve(__dirname, '../../views/index.hbs'), 'utf8')
       cachedView = Handlebars.compile(file)
@@ -70,7 +71,7 @@ const getView = async () => {
 
 let cachedAssets = {}
 const getAsset = async assetPath => {
-  if (!cachedAssets[assetPath]) {
+  if (!cachedAssets[assetPath] || argv.dev) {
     try {
       let file = await toPromise(fs.readFile)(path.resolve(__dirname, '../../dist/assets', assetPath), 'utf8')
       cachedAssets[assetPath] = file
