@@ -1,7 +1,7 @@
 # micro-gallery
-Like [zeit's micro-list](https://github.com/zeit/micro-list), but for images.
+Like [zeit's list](https://github.com/zeit/micro-list), but for images.
 
-Share you folder of images with a single command.
+Share you folder(s) of images with a single command.
 
 ## Usage 
 Install it (requires Node v6.0.0 and above)
@@ -23,7 +23,7 @@ $ gallery [options] <path>
 | -h, --help             | Output all available options | - |
 | -v, --version          | The version tag of the micro-gallery instance on your device | - |
 | -p, --port [port]      | A custom port on which the app will be running | 3000 |
-| -d, --dev              | Use development mode. When active assets and template isn't cached | - |
+| -d, --dev              | Use development mode. When active assets and template aren't cached | - |
 
 ## Contribute
 
