@@ -186,7 +186,5 @@ server.listen(argv.port || defaultPort, async () => {
     process.exit(1)
   }
 
-  if (process.env.NODE_ENV === 'development') {
-    console.log(green(`Running on http://localhost:${server.address().port}`))
-  }
+  console.log(green(`Running on http://localhost:${server.address().port}`))
 })
