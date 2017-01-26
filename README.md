@@ -1,5 +1,5 @@
 # micro-gallery
-Like [zeit's list](https://github.com/zeit/micro-list), but for images.
+Like [zeit's serve](https://github.com/zeit/serve), but for images.
 
 Share you folder(s) of images with a single command.
 
