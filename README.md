@@ -3,6 +3,14 @@ Like [zeit's serve](https://github.com/zeit/serve), but for images.
 
 Share you folder(s) of images with a single command.
 
+## Demo
+
+https://micro-gallery.now.sh
+
+### Demo source
+
+https://micro-gallery.now.sh/_src
+
 ## Usage 
 Install it (requires Node v6.0.0 and above)
 
