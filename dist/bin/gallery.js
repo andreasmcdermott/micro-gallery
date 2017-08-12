@@ -49,10 +49,7 @@ const argv = (0, _minimist2.default)(process.argv.slice(2), {
   }
 });
 
-let root = process.cwd();
-if (argv._.length > 0) {
-  root = _path2.default.resolve(root, argv._[0]);
-}
+const root = argv._.length > 0 ? _path2.default.resolve(process.cwd(), argv._[0]) : process.cwd();
 const rootObj = _path2.default.parse(root);
 
 const isDirectory = (() => {
@@ -157,15 +154,16 @@ const renderDir = (() => {
         continue;
       }
 
-      const filePath = _path2.default.relative(root, _path2.default.resolve(directory, files[i]));
+      const filePath = _path2.default.resolve(root, _path2.default.resolve(directory, files[i]));
+      const relativeFilePath = _path2.default.relative(root, _path2.default.resolve(directory, files[i]));
       if (yield isDirectory(filePath)) {
         data.directories.push({
-          relative: filePath,
+          relative: relativeFilePath,
           name: files[i]
         });
       } else if (validExtensions.has(_path2.default.parse(filePath).ext)) {
         data.images.push({
-          relative: filePath,
+          relative: relativeFilePath,
           name: files[i]
         });
       }
@@ -246,7 +244,5 @@ server.listen(argv.port || defaultPort, _asyncToGenerator(function* () {
     process.exit(1);
   }
 
-  if (process.env.NODE_ENV === 'development') {
-    console.log((0, _chalk.green)(`Running on http://localhost:${ server.address().port }`));
-  }
+  console.log((0, _chalk.green)(`Running on http://localhost:${ server.address().port }`));
 }));

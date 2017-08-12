@@ -5,24 +5,23 @@ import fs from 'fs'
 import path from 'path'
 import minimist from 'minimist'
 import toPromise from 'denodeify'
-import micro, {send} from 'micro'
+import micro, { send } from 'micro'
 import mime from 'mime'
-import {parse} from 'url'
-import {green, red} from 'chalk'
+import { parse } from 'url'
+import { green, red } from 'chalk'
 import Handlebars from 'handlebars'
 
 const defaultPort = 3000
 const validExtensions = new Set([
-  '.jpeg', '.jpg',
+  '.jpeg',
+  '.jpg',
   '.png',
   '.gif',
   '.bmp',
-  '.tiff', '.tif'
+  '.tiff',
+  '.tif'
 ])
-const ignoredFiles = new Set([
-  '.git',
-  '.DS_Store'
-])
+const ignoredFiles = new Set(['.git', '.DS_Store'])
 
 const argv = minimist(process.argv.slice(2), {
   alias: {
@@ -31,17 +30,15 @@ const argv = minimist(process.argv.slice(2), {
   }
 })
 
-let root = process.cwd()
-if (argv._.length > 0) {
-  root = path.resolve(root, argv._[0])
-}
+const root =
+  argv._.length > 0 ? path.resolve(process.cwd(), argv._[0]) : process.cwd()
 const rootObj = path.parse(root)
 
 const isDirectory = async directory => {
   try {
     const stats = await toPromise(fs.stat)(directory)
     return stats.isDirectory()
-  } catch(err) {
+  } catch (err) {
     return false
   }
 }
@@ -50,7 +47,7 @@ const exists = async filePath => {
   try {
     await toPromise(fs.stat)(filePath)
     return true
-  } catch(err) {
+  } catch (err) {
     return false
   }
 }
@@ -59,7 +56,10 @@ let cachedView = null
 const getView = async () => {
   if (!cachedView || argv.dev) {
     try {
-      let file = await toPromise(fs.readFile)(path.resolve(__dirname, '../../views/index.hbs'), 'utf8')
+      let file = await toPromise(fs.readFile)(
+        path.resolve(__dirname, '../../views/index.hbs'),
+        'utf8'
+      )
       cachedView = Handlebars.compile(file)
     } catch (err) {
       throw err
@@ -73,7 +73,10 @@ let cachedAssets = {}
 const getAsset = async assetPath => {
   if (!cachedAssets[assetPath] || argv.dev) {
     try {
-      let file = await toPromise(fs.readFile)(path.resolve(__dirname, '../../dist/assets', assetPath), 'utf8')
+      let file = await toPromise(fs.readFile)(
+        path.resolve(__dirname, '../../dist/assets', assetPath),
+        'utf8'
+      )
       cachedAssets[assetPath] = file
     } catch (err) {
       throw err
@@ -98,7 +101,7 @@ const renderDir = async directory => {
   }
 
   let url = []
-  for(let i = 0; i < dirPathParts.length; ++i) {
+  for (let i = 0; i < dirPathParts.length; ++i) {
     if (dirPathParts[i] !== rootObj.base) {
       url.push(dirPathParts[i])
     }
@@ -109,20 +112,24 @@ const renderDir = async directory => {
     })
   }
 
-  for(let i = 0; i < files.length; ++i) {
+  for (let i = 0; i < files.length; ++i) {
     if (ignoredFiles.has(files[i])) {
       continue
     }
-    
-    const filePath = path.relative(root, path.resolve(directory, files[i]))
+
+    const filePath = path.resolve(root, path.resolve(directory, files[i]))
+    const relativeFilePath = path.relative(
+      root,
+      path.resolve(directory, files[i])
+    )
     if (await isDirectory(filePath)) {
       data.directories.push({
-        relative: filePath,
+        relative: relativeFilePath,
         name: files[i]
       })
     } else if (validExtensions.has(path.parse(filePath).ext)) {
       data.images.push({
-        relative: filePath,
+        relative: relativeFilePath,
         name: files[i]
       })
     }
@@ -145,7 +152,7 @@ const renderImage = async file => {
 }
 
 const server = micro(async (req, res) => {
-  const {pathname} = parse(req.url)
+  const { pathname } = parse(req.url)
   const pathObj = path.parse(path.join(root, pathname))
   const reqPath = decodeURIComponent(path.format(pathObj))
 
