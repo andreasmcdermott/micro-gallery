@@ -1,11 +1,13 @@
 {
   "name": "micro-gallery",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Like zeit's micro-list, but for images.",
   "bin": {
     "gallery": "./dist/bin/gallery.js"
   },
   "scripts": {
+    "dev": "gallery",
+    "build": "gulp build",
     "start": "gulp"
   },
   "repository": {
