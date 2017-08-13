@@ -1,38 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Images in {{folder}}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{assetsDir}}/style.css">
-  </head>
-  <body>
-    <main>
-      <h1>Images in&nbsp;
-        {{#each path}}
-          <a href="/{{url}}">{{name}}</a>
-        {{/each}}
-      </h1>
 
-      <ul class="directories">
-        {{#each directories}}
-          <li><a href="/{{relative}}">{{name}}</a></li>
-        {{/each}}
-      </ul>
+<head>
+  <title>Images in {{folder}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="{{assetDir}}/favicon.ico" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{assetsDir}}/style.css">
+</head>
 
-      <ul class="images">
-        {{#each images}}
-          <li><a href="#" class="images__zoom"><img src="/{{relative}}" alt="{{name}}" title="{{name}}" class="images__img"></a></li>
-        {{/each}}
-      </ul>
+<body>
+  <main>
+    <h1>Images in&nbsp; {{#each path}}
+      <a href="/{{url}}">{{name}}</a> {{/each}}
+    </h1>
 
-      <div class="image--zoomed js-unzoom">
-        <a href="#" class="js-unzoom">
+    <ul class="directories">
+      {{#each directories}}
+      <li><a href="/{{relative}}">{{name}}</a></li>
+      {{/each}}
+    </ul>
+
+    <ul class="images">
+      {{#each images}}
+      <li><a href="#" class="images__zoom"><img src="/{{relative}}" alt="{{name}}" title="{{name}}" class="images__img"></a></li>
+      {{/each}}
+    </ul>
+
+    <div class="image--zoomed js-unzoom">
+      <a href="#" class="js-unzoom">
           <img id="zoomedImage" src="" alt="" title="" class="js-unzoom">
         </a>
-      </div> 
-    </main>
-    <script type="text/javascript" src="{{assetsDir}}/app.js"></script>
-  </body>
+    </div>
+  </main>
+  <script type="text/javascript" src="{{assetsDir}}/app.js"></script>
+</body>
 </html
