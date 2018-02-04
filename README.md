@@ -11,6 +11,8 @@ https://micro-gallery.now.sh
 
 https://micro-gallery.now.sh/_src
 
+There isn't much "source" to talk about though, it is mainly a folder of images and a package.json file.
+
 ## Usage 
 Install it (requires Node v6.0.0 and above)
 
